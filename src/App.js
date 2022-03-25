@@ -1,12 +1,13 @@
-import { useEffect } from "react";
-import Product from "./components/products/product";
+import { useEffect, useState } from "react";
+import Products from "./components/products";
 import SelectedItem from "./components/selectedItem";
 
 function App() {
+    const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch(`https://openapi.programming-hero.com/api/phones?search=samsung`)
             .then((res) => res.json())
-            .then((data) => console.log(data?.data))
+            .then((data) => setProducts(data?.data))
             .catch((e) => console.log(e.message));
     }, []);
 
@@ -16,8 +17,8 @@ function App() {
                 Phone Shop
             </h1>
             <div className="grid grid-cols-3 sm:grid-cols-4">
-                <div className="col-span-2 sm:col-span-3">
-                    <Product />
+                <div className="col-span-2 sm:col-span-3 container">
+                    <Products products={products} />
                 </div>
                 <div className="col-span-1">
                     <SelectedItem />

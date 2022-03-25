@@ -13,14 +13,14 @@ function App() {
 
     return (
         <div>
-            <h1 className="py-4 text-4xl font-semibold text-center text-white bg-blue-500">
+            <h1 className="sticky top-0 z-50 py-4 text-4xl font-semibold text-center text-white bg-blue-500">
                 Phone Shop
             </h1>
             <div className="grid grid-cols-3 sm:grid-cols-4">
-                <div className="col-span-2 sm:col-span-3 container">
+                <div className="container col-span-2 px-10 my-5 sm:col-span-3">
                     <Products products={products} />
                 </div>
-                <div className="col-span-1">
+                <div className="sticky col-span-1 top-5 bg-cyan-200">
                     <SelectedItem />
                 </div>
             </div>

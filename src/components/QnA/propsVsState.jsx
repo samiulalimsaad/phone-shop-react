@@ -21,9 +21,9 @@ const PropsVsState = () => {
             <ol className="list-decimal">
                 <li>State is readable and writable.</li>
                 <li>State pass from the parent element to child as Props.</li>
-                <li>Props are used to store data in a Component.</li>
-                <li>Props are mutable via a setter function.</li>
-                <li>stateless Component don't have state.</li>
+                <li>State are used to store data in a Component.</li>
+                <li>State are mutable via a setter function.</li>
+                <li>Stateless Component don't have state.</li>
                 <li>on state change react re render the Component.</li>
                 <li>only accessible inside the Component.</li>
             </ol>

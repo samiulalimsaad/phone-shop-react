@@ -29,7 +29,7 @@ const HowReactWorks = () => {
             </p>
 
             <p>
-                At forst the changes are applied in virtual DOM the in the
+                At first the changes are applied in virtual DOM the in the
                 Browser DOM
             </p>
         </div>

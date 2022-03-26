@@ -1,12 +1,16 @@
 import React from "react";
 import Product from "./product";
 
-const Products = ({ products }) => {
+const Products = ({ products, addToSelectedProduct }) => {
     console.log(products);
     return (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             {products?.map((product) => (
-                <Product key={product.slug} product={product} />
+                <Product
+                    key={product.slug}
+                    product={product}
+                    addToSelectedProduct={addToSelectedProduct}
+                />
             ))}
         </div>
     );

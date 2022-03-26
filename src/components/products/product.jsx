@@ -13,7 +13,7 @@ const Product = ({ product, addToSelectedProduct }) => {
                 </p>
             </div>
             <button
-                className="absolute bottom-0 flex items-center justify-center w-full py-2 text-white transition-colors duration-300 bg-blue-500 hover:bg-cyan-500"
+                className="absolute bottom-0 flex items-center justify-center w-full p-2 text-white transition-colors duration-300 bg-blue-500 hover:bg-cyan-500"
                 onClick={() => {
                     addToSelectedProduct(product);
                 }}

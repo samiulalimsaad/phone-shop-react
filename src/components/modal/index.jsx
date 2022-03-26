@@ -24,7 +24,7 @@ const Modal = ({ selectedProducts, length, selectOne, closeModal }) => {
                     </svg>
                 </button>
 
-                {selectOne?.slug && (
+                {selectOne?.slug ? (
                     <div className="flex items-center justify-center w-full h-full py-4 space-x-4 text-4xl text-center">
                         <div className="flex items-center justify-center my-4 transition-transform duration-300 hover:scale-110">
                             <img
@@ -42,12 +42,12 @@ const Modal = ({ selectedProducts, length, selectOne, closeModal }) => {
                             </p>
                         </div>
                     </div>
-                )}
-
-                {length && (
-                    <div className="flex items-center justify-center w-full h-full py-4 text-4xl text-center">
-                        You can add only 4 items in the cart
-                    </div>
+                ) : (
+                    length && (
+                        <div className="flex items-center justify-center w-full h-full py-4 text-4xl text-center">
+                            You can add only 4 items in the cart
+                        </div>
+                    )
                 )}
             </div>
         </div>

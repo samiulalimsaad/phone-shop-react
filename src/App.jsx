@@ -1,27 +1,44 @@
 import { useEffect, useState } from "react";
+import Modal from "./components/modal";
 import Products from "./components/products";
 import SelectedItem from "./components/selectedItem";
 
 function App() {
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
+    const [showModal, setModal] = useState(false);
+    const [selectOne, setSelectOne] = useState({});
 
     useEffect(() => {
         fetch(`/products.json`)
             .then((res) => res.json())
             .then((data) => setProducts(data))
-            .catch((e) => console.log(e.message));
+            .catch((e) => console.error(e.message));
     }, []);
 
-    console.log({ products });
-
     const addToSelectedProduct = (prod) => {
-        setSelectedProducts((p) => [...p, prod]);
+        console.log(selectedProducts.length);
+        if (selectedProducts.length < 4) {
+            setSelectedProducts((p) => [...p, prod]);
+        } else {
+            setSelectOne({});
+            setModal(true);
+        }
     };
 
     const removeFromSelectedProduct = (slug) => {
         const temp = selectedProducts.filter((p) => p.slug !== slug);
         setSelectedProducts(temp);
+    };
+
+    const clearSelectedProduct = () => {
+        setSelectedProducts([]);
+    };
+
+    const selectOneFromSelectedProduct = () => {
+        const temp = Math.round(Math.random() * selectedProducts?.length);
+        setSelectOne(selectedProducts[temp]);
+        setModal(true);
     };
 
     return (
@@ -40,9 +57,21 @@ function App() {
                     <SelectedItem
                         selectedProducts={selectedProducts}
                         removeFromSelectedProduct={removeFromSelectedProduct}
+                        clearSelectedProduct={clearSelectedProduct}
+                        selectOneFromSelectedProduct={
+                            selectOneFromSelectedProduct
+                        }
                     />
                 </div>
             </div>
+            {showModal && (
+                <Modal
+                    selectedProducts={selectedProducts}
+                    length={selectedProducts.length >= 4}
+                    selectOne={selectOne}
+                    closeModal={setModal}
+                />
+            )}
         </div>
     );
 }

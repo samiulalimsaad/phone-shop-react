@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Modal from "./components/modal";
 import Products from "./components/products";
+import QnA from "./components/QnA";
 import SelectedItem from "./components/selectedItem";
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
     }, []);
 
     const addToSelectedProduct = (prod) => {
-        console.log(selectedProducts.length);
         if (selectedProducts.length < 4) {
             setSelectedProducts((p) => [...p, prod]);
         } else {
@@ -52,6 +52,8 @@ function App() {
                         products={products}
                         addToSelectedProduct={addToSelectedProduct}
                     />
+                    <hr className="my-14 border-slate-500" />
+                    <QnA />
                 </div>
                 <div className="h-full col-span-1 bg-cyan-200">
                     <SelectedItem
